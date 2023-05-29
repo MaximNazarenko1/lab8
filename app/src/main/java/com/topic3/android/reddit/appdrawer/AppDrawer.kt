@@ -10,7 +10,6 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -23,8 +22,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.topic3.android.reddit.R
-
 import com.topic3.android.reddit.theme.RedditThemeSettings
+
 
 /**
  * Представляет корневую композицию для панели приложений, используемой на экранах.
@@ -181,6 +180,7 @@ private fun ProfileInfoItem(
   }
 }
 
+
 /**
  * Представляет действия drawer приложения:
  * * экранная навигация
@@ -188,6 +188,7 @@ private fun ProfileInfoItem(
  */
 @Composable
 private fun AppDrawerBody(closeDrawerAction: () -> Unit) {
+  //TODO add your code here
   Column{
     ScreenNavigationButton(
       icon = Icons.Filled.AccountBox ,
@@ -255,51 +256,6 @@ private fun ScreenNavigationButton(
 /**
  * Представляет компонент настройки в панели приложений.
  */
-
-@Composable
-private fun ScreenNavigationButton(
-  icon: ImageVector,
-  label: String,
-  onClickAction: () -> Unit,
-  modifier: Modifier = Modifier
-) {
-  val colors = MaterialTheme.colors
-
-  val surfaceModifier = modifier
-    .padding(start = 8.dp, top = 8.dp, end = 8.dp)
-    .fillMaxWidth()
-
-  Surface(
-    modifier = surfaceModifier,
-    color = colors.surface,
-    shape = MaterialTheme.shapes.small
-  ) {
-    TextButton(
-      onClick = onClickAction,
-      modifier = Modifier.fillMaxWidth()
-    ) {
-      Row(
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
-      ) {
-        Image(
-          imageVector = icon,
-          colorFilter = ColorFilter.tint(Color.Gray),
-          contentDescription = label
-        )
-        Spacer(Modifier.width(16.dp))
-        Text(
-          fontSize = 10.sp,
-          text = label,
-          style = MaterialTheme.typography.body2,
-          color = colors.primaryVariant
-        )
-      }
-    }
-  }
-}
-
 @Composable
 private fun AppDrawerFooter(modifier: Modifier = Modifier) {
   //TODO add your code here
@@ -351,6 +307,7 @@ private fun AppDrawerFooter(modifier: Modifier = Modifier) {
     )
   }
 }
+
 private fun changeTheme() {
   RedditThemeSettings.isInDarkTheme.value = RedditThemeSettings.isInDarkTheme.value.not()
 }
